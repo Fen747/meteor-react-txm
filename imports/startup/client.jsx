@@ -2,11 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 import { createContainer } from 'react-meteor-data';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Login from '/imports/ui/Login';
 import Home from '/imports/ui/Home';
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -46,9 +48,11 @@ Meteor.startup( f => {
 	//new WOW().init();
 
 	render(
-		<BrowserRouter>
-	    <App />
-	  </BrowserRouter>
+		<MuiThemeProvider>
+			<BrowserRouter>
+		    <App />
+		  </BrowserRouter>
+		</MuiThemeProvider>
 	  , document.getElementById('render-target')
 	);
 } );
